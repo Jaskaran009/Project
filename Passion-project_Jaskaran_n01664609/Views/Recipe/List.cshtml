@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Passion_project_Jaskaran_n01664609.Models.RecipeDto>
+
+<h2>List of Recipes</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Recipe Name</th>
+            <th>Recipe Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var recipe in Model)
+        {
+            <tr>
+                <td>@recipe.RecipeName</td>
+                <td>@recipe.RecipeType</td> 
+                <td>
+                    <form method="get" action="@Url.Action("Details", "Recipe", new { id = recipe.RecipeID })">
+                        <button type="submit" class="btn btn-info">Details</button>
+                    </form>
+
+                    <form method="get" action="@Url.Action("Edit", "Recipe", new { id = recipe.RecipeID })">
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
+
+                    <form method="post" action="@Url.Action("DeleteConfirm", "Recipe", new { id = recipe.RecipeID })">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form method="get" action="@Url.Action("New", "Recipe")">
+    <button type="submit" class="btn btn-success">Add New Recipe</button>
+</form>
+
