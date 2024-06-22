@@ -44,9 +44,10 @@ using System.Diagnostics;
 
                 RecipeDtos.Add(Dto);
 
-
-            }
+        }
+        
             return RecipeDtos;
+        
 
         }
 
@@ -147,10 +148,11 @@ using System.Diagnostics;
     /// POST: api/RecipeData/AddRecipe
     /// </example>
 
-
+    // POST: api/RecipeData/AddRecipe
     [ResponseType(typeof(Recipe))]
         [HttpPost]
-        public IHttpActionResult AddRecipe(Recipe recipe)
+      [Route("api/RecipeData/AddRecipe")]
+       public IHttpActionResult AddRecipe(Recipe recipe)
         {
             if (!ModelState.IsValid)
             {
@@ -160,7 +162,7 @@ using System.Diagnostics;
             db.Recipes.Add(recipe);
             db.SaveChanges();
 
-            return Ok();
+            return CreatedAtRoute("DefaultApi", new { id = recipe.RecipeID }, recipe);
         }
 
 

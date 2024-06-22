@@ -11,17 +11,18 @@ using System.Web.Script.Serialization;
 
 namespace Passion_project_Jaskaran_n01664609.Controllers
 {
-    public class RecipeController : Controller
+    public class RecipeController : Controller 
     {
         private static readonly HttpClient client = new HttpClient();
         private JavaScriptSerializer jss = new JavaScriptSerializer();
 
         static RecipeController()
         {
-            client.BaseAddress = new Uri("https://localhost:44324/api/");
+            client.BaseAddress = new Uri("https://localhost:44336/api/");
         }
 
         // GET: Recipe/List
+        //
         public ActionResult List()
         {
             string url = "RecipeData/ListRecipe";
@@ -42,7 +43,7 @@ namespace Passion_project_Jaskaran_n01664609.Controllers
         public ActionResult Details(int id)
         {
             DetailsRecipe ViewModel = new DetailsRecipe(); // Ensure DetailsRecipe exists and is correctly implemented
-            string url = $"RecipeData/FindRecipe/{id}";
+            string url = "RecipeData/FindRecipe/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             if (response.IsSuccessStatusCode)
@@ -57,7 +58,6 @@ namespace Passion_project_Jaskaran_n01664609.Controllers
         }
 
         // GET: Recipe/New
-        [HttpGet]
         public ActionResult New()
         {
             return View();
@@ -69,8 +69,8 @@ namespace Passion_project_Jaskaran_n01664609.Controllers
         {
             string url = "RecipeData/AddRecipe";
 
-            string jsonPayload = jss.Serialize(recipe);
-            HttpContent content = new StringContent(jsonPayload);
+            string jsonpayload = jss.Serialize(recipe);
+            HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
 
             HttpResponseMessage response = client.PostAsync(url, content).Result;
@@ -81,7 +81,7 @@ namespace Passion_project_Jaskaran_n01664609.Controllers
             }
             else
             {
-                return RedirectToAction("Error");
+                return RedirectToAction("List");
             }
         }
 
@@ -98,7 +98,7 @@ namespace Passion_project_Jaskaran_n01664609.Controllers
             }
             else
             {
-                return RedirectToAction("Error");
+                return RedirectToAction("selectedRecipe");
             }
         }
 
@@ -137,7 +137,7 @@ namespace Passion_project_Jaskaran_n01664609.Controllers
             }
             else
             {
-                return RedirectToAction("Error");
+                return RedirectToAction("List");
             }
         }
 
@@ -165,3 +165,4 @@ namespace Passion_project_Jaskaran_n01664609.Controllers
         }
     }
 }
+

@@ -9,7 +9,7 @@ namespace Passion_project_Jaskaran_n01664609.Models.ViewModels
     {
 
         //the ingredients itself that we want to display
-        public IngredientsDto SelectedIngredients{ get; set; }
+        public IngredientsDto SelectedIngredients { get; set; }
 
         //all of the related animals to that particular species
         public IEnumerable<RecipeDto> RelatedRecipes { get; set; }

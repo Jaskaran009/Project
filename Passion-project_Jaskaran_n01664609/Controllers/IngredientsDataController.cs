@@ -28,7 +28,7 @@ namespace Passion_project_Jaskaran_n01664609.Controllers
         ///</example>
         [HttpGet]
         [Route("api/IngredientsData/ListIngredients")]
-        public List<IngredientsDto> ListRecipe()
+        public List<IngredientsDto> ListIngredients()
         {
             //SELECT * FROM RECIPE
             List<Ingredients> IngredientsData= db.Ingredient.ToList();
@@ -40,7 +40,7 @@ namespace Passion_project_Jaskaran_n01664609.Controllers
                 IngredientsDto Dto = new IngredientsDto();
 
                 Dto.IngredientID = Ingredients.IngredientID;
-                Dto.IngredientName= Ingredients.IngredientName;
+                Dto.IngredientName = Ingredients.IngredientName;
                 
 
                 IngredientsDtos.Add(Dto);
