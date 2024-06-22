@@ -3,10 +3,10 @@
 ## Features:
 
 ## Recipe Management: Users can create, view, update, and delete recipes.
-Instruction Management: Users can manage instructions associated with each recipe.
-User Authentication: Secure user authentication system to manage access to recipe data.
-Responsive Design: The application is designed to be responsive and accessible from multiple devices.
-Technologies Used
+### Instruction Management: Users can manage instructions associated with each recipe.
+### User Authentication: Secure user authentication system to manage access to recipe data.
+### Responsive Design: The application is designed to be responsive and accessible from multiple devices.
+### Technologies Used
 ASP.NET MVC: Used for building the web application.
 Entity Framework: Used for data modeling and database interactions.
 C#: Backend logic and business logic implementation.
